@@ -1,0 +1,47 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/freespee/home/workspace/ios_mobile_sdk_distribution/FreespeeSDK/FreespeeSDK/Freespee.h",
+      "line": 84,
+      "symbol": "Freespee.-init",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/freespee/home/workspace/ios_mobile_sdk_distribution/FreespeeSDK/FreespeeSDK/FreespeeCallNotes.h",
+      "line": 20,
+      "symbol": "FreespeeCallNoteType.FreespeeCallNoteTypeString",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/freespee/home/workspace/ios_mobile_sdk_distribution/FreespeeSDK/FreespeeSDK/FreespeeCallNotes.h",
+      "line": 21,
+      "symbol": "FreespeeCallNoteType.FreespeeCallNoteTypeNumber",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/freespee/home/workspace/ios_mobile_sdk_distribution/FreespeeSDK/FreespeeSDK/FreespeeSDK.h",
+      "line": 12,
+      "symbol": "FreespeeSDKVersionNumber",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/freespee/home/workspace/ios_mobile_sdk_distribution/FreespeeSDK/FreespeeSDK/FreespeeSDK.h",
+      "line": 15,
+      "symbol": "FreespeeSDKVersionString",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/freespee/home/workspace/ios_mobile_sdk_distribution/FreespeeSDK/FreespeeSDK/FreespeeUserJourney.h",
+      "line": 86,
+      "symbol": "FreespeeUserJourneyEventKey",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/freespee/home/workspace/ios_mobile_sdk_distribution"
+}

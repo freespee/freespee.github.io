@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Freespee Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/Freespee" class="dashAnchor"></a>
+    <a title="Freespee Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">FreespeeSDK Docs</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">FreespeeSDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Freespee Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Main SDK Interface.html">Main SDK Interface</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Freespee.html">Freespee</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FreespeeError.html">FreespeeError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Call handling.html">Call handling</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeCall.html">FreespeeCall</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeCallStateChangeListener.html">FreespeeCallStateChangeListener</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeIncomingCallListener.html">FreespeeIncomingCallListener</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FreespeeCallState.html">FreespeeCallState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FreespeeCallType.html">FreespeeCallType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Incoming call data.html">Incoming call data</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeUserSegment.html">FreespeeUserSegment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeUserJourney.html">FreespeeUserJourney</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Constants.html">Other Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeErrorDomain">FreespeeErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallAnswered">FreespeeUserJourneyEventKeyCallAnswered</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallDuration">FreespeeUserJourneyEventKeyCallDuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallEndDate">FreespeeUserJourneyEventKeyCallEndDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallEndNumber">FreespeeUserJourneyEventKeyCallEndNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallFromArea">FreespeeUserJourneyEventKeyCallFromArea</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallFromNumber">FreespeeUserJourneyEventKeyCallFromNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallSegmentName">FreespeeUserJourneyEventKeyCallSegmentName</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallToNumber">FreespeeUserJourneyEventKeyCallToNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeySMSData">FreespeeUserJourneyEventKeySMSData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeySMSType">FreespeeUserJourneyEventKeySMSType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionBrowser">FreespeeUserJourneyEventKeyWebSessionBrowser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionDevice">FreespeeUserJourneyEventKeyWebSessionDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionPlatform">FreespeeUserJourneyEventKeyWebSessionPlatform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionReferrer">FreespeeUserJourneyEventKeyWebSessionReferrer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionURL">FreespeeUserJourneyEventKeyWebSessionURL</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/FreespeeCallEndedReason.html">FreespeeCallEndedReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Enums.html#/c:@E@FreespeeCallNoteType">FreespeeCallNoteType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FreespeeUserJourneyEventType.html">FreespeeUserJourneyEventType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeCallNote.html">FreespeeCallNote</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeCallNotes.html">FreespeeCallNotes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeSegment.html">FreespeeSegment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeUserJourneyEvent.html">FreespeeUserJourneyEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeUserJourneyVisitorInfo.html">FreespeeUserJourneyVisitorInfo</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Type Definitions.html">Other Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolution">CallKitLocalizedNameResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolver">CallKitLocalizedNameResolver</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Freespee</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">Freespee</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Main Freespee SDK interaction point.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(cm)configureWithAPIKey:"></a>
+                    <a name="//apple_ref/objc/Method/+configureWithAPIKey:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(cm)configureWithAPIKey:">+configureWithAPIKey:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Configure the SDK for later usage.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This needs to be called before using any of the other SDK functions. Calling this multiple times will have no effect.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">configureWithAPIKey</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">apiKey</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">configure</span><span class="p">(</span><span class="kt">APIKey</span> <span class="nv">apiKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>apiKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Your pre shared api key.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(cm)configureWithAPIKey:environment:"></a>
+                    <a name="//apple_ref/objc/Method/+configureWithAPIKey:environment:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(cm)configureWithAPIKey:environment:">+configureWithAPIKey:environment:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Configure the SDK with developer options - this configuration function should typically not be used in production builds.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">configureWithAPIKey</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">apiKey</span>
+                <span class="nf">environment</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">environment</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">configure</span><span class="p">(</span><span class="kt">APIKey</span> <span class="nv">apiKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">environment</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>apiKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Your pre shared api key.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>environment</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Provide a custom environment.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(cm)shared"></a>
+                    <a name="//apple_ref/objc/Method/+shared" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(cm)shared">+shared</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    You need to configure the SDK before accessing the shared instance.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span> <span class="n">_Nullable</span><span class="p">)</span><span class="n">shared</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">shared</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="k">Self</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The shared Freespee instance.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(py)incomingCallListener"></a>
+                    <a name="//apple_ref/objc/Property/incomingCallListener" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(py)incomingCallListener">incomingCallListener</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Listener for incoming calls.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The listener will be in charge of presenting a UI for handling the call.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/FreespeeIncomingCallListener.html">FreespeeIncomingCallListener</a></span><span class="o">&gt;</span>
+    <span class="n">incomingCallListener</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">weak</span> <span class="k">var</span> <span class="nv">incomingCallListener</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FreespeeIncomingCallListener.html">FreespeeIncomingCallListener</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(im)connectIdentifier:completion:"></a>
+                    <a name="//apple_ref/objc/Method/-connectIdentifier:completion:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(im)connectIdentifier:completion:">-connectIdentifier:completion:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This function will connect to the SDK backend using the given identifier.
+It will also register for VoIP-push and request audio recording permissions from the user unless already granted.</p>
+
+<p>Emitted errors:
+<code>FreespeeErrorInvalidState</code>
+<code>FreespeeErrorInvalidAPIKey</code>
+<code>FreespeeErrorInvalidArgument</code>
+<code>FreespeeErrorAudioRecordingPermission</code>
+<code>FreespeeErrorNetwork</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">connectIdentifier</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">identifier</span>
+               <span class="nf">completion</span><span class="p">:(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">))</span><span class="nv">completion</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">connectIdentifier</span><span class="p">(</span><span class="n">_</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>identifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier to connect.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Called upon completion with an error if something went wrong.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(im)disconnect"></a>
+                    <a name="//apple_ref/objc/Method/-disconnect" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(im)disconnect">-disconnect</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Disconnects the currently connected identifier and unregister from VoIP push notifications.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Calling this without being connected has no effect.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">disconnect</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">disconnect</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(im)startListeningForIncomingCalls:"></a>
+                    <a name="//apple_ref/objc/Method/-startListeningForIncomingCalls:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(im)startListeningForIncomingCalls:">-startListeningForIncomingCalls:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the SDK in a state where it listens for incoming phone calls without the need for recieving a VoIP push notification.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    You should use this for debugging/testing purposes only, using this in production will consume significant battery life.
+
+</div>
+
+<p>Emitted errors:
+<code>FreespeeErrorInvalidState</code>
+<code>FreespeeErrorInternal</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">startListeningForIncomingCalls</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">))</span><span class="nv">completion</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">startListeningForIncomingCalls</span><span class="p">(</span><span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(im)stopListeningForIncomingCalls:"></a>
+                    <a name="//apple_ref/objc/Method/-stopListeningForIncomingCalls:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(im)stopListeningForIncomingCalls:">-stopListeningForIncomingCalls:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Will disconnect the SDK after a previous call to -debugStartListeningForIncomingCalls:.</p>
+
+<p>Emitted errors:
+<code>FreespeeErrorInvalidState</code>
+<code>FreespeeErrorInternal</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">stopListeningForIncomingCalls</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">_Nullable</span><span class="p">))</span><span class="nv">completion</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stopListeningForIncomingCalls</span><span class="p">(</span><span class="n">_</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/CallKit%20Integration"></a>
+                <a name="//apple_ref/objc/Section/CallKit Integration" class="dashAnchor"></a>
+                <a href="#/CallKit%20Integration">
+                  <h3 class="section-name">CallKit Integration</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(im)enableCallKitWithConfiguration:"></a>
+                    <a name="//apple_ref/objc/Method/-enableCallKitWithConfiguration:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(im)enableCallKitWithConfiguration:">-enableCallKitWithConfiguration:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enable CallKit and let the SDK manage a CXProvider instance internally.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enableCallKitWithConfiguration</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="n">CXProviderConfiguration</span> <span class="o">*</span><span class="p">)</span><span class="nv">configuration</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">enableCallKit</span><span class="p">(</span><span class="n">with</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">CXProviderConfiguration</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The configuration to use.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(py)callKitLocalizedNameResolver"></a>
+                    <a name="//apple_ref/objc/Property/callKitLocalizedNameResolver" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(py)callKitLocalizedNameResolver">callKitLocalizedNameResolver</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Resolving block to get a localized name to display for a Freespee call in CallKit.
+Without a resolver set all calls will be showing off as Unknown.
+Typically you will use the <code>peerIdentifier</code> on the <code><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></code> to do your own lookup as it is an identifier known to the app domain.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span>
+    <span class="n"><a href="../Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolver">CallKitLocalizedNameResolver</a></span> <span class="n">callKitLocalizedNameResolver</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(im)disableCallKit"></a>
+                    <a name="//apple_ref/objc/Method/-disableCallKit" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(im)disableCallKit">-disableCallKit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Disable CallKit.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">disableCallKit</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">disableCallKit</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Freespee(py)isCallKitEnabled"></a>
+                    <a name="//apple_ref/objc/Property/isCallKitEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Freespee(py)isCallKitEnabled">isCallKitEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns YES if CallKit integration is enabled.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">isCallKitEnabled</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isCallKitEnabled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://www.freespee.com" target="_blank" rel="external">Freespee</a>. All rights reserved. (Last updated: 2019-06-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

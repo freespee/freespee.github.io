@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.freespee.freespee"},{"l":"com.freespee.freespee.data.journey"},{"l":"com.freespee.freespee.data.journey.event"},{"l":"com.freespee.freespee.data.segment"}]

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FreespeeSDK  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="FreespeeSDK  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">FreespeeSDK Docs</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">FreespeeSDK Reference</a>
+        <img id="carat" src="img/carat.png" />
+        FreespeeSDK  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Main SDK Interface.html">Main SDK Interface</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Freespee.html">Freespee</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/FreespeeError.html">FreespeeError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Call handling.html">Call handling</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/FreespeeCall.html">FreespeeCall</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FreespeeCallStateChangeListener.html">FreespeeCallStateChangeListener</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FreespeeIncomingCallListener.html">FreespeeIncomingCallListener</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/FreespeeCallState.html">FreespeeCallState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/FreespeeCallType.html">FreespeeCallType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Incoming call data.html">Incoming call data</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/FreespeeUserSegment.html">FreespeeUserSegment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FreespeeUserJourney.html">FreespeeUserJourney</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Constants.html">Other Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeErrorDomain">FreespeeErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallAnswered">FreespeeUserJourneyEventKeyCallAnswered</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallDuration">FreespeeUserJourneyEventKeyCallDuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallEndDate">FreespeeUserJourneyEventKeyCallEndDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallEndNumber">FreespeeUserJourneyEventKeyCallEndNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallFromArea">FreespeeUserJourneyEventKeyCallFromArea</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallFromNumber">FreespeeUserJourneyEventKeyCallFromNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallSegmentName">FreespeeUserJourneyEventKeyCallSegmentName</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallToNumber">FreespeeUserJourneyEventKeyCallToNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeySMSData">FreespeeUserJourneyEventKeySMSData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeySMSType">FreespeeUserJourneyEventKeySMSType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionBrowser">FreespeeUserJourneyEventKeyWebSessionBrowser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionDevice">FreespeeUserJourneyEventKeyWebSessionDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionPlatform">FreespeeUserJourneyEventKeyWebSessionPlatform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionReferrer">FreespeeUserJourneyEventKeyWebSessionReferrer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionURL">FreespeeUserJourneyEventKeyWebSessionURL</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/FreespeeCallEndedReason.html">FreespeeCallEndedReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Enums.html#/c:@E@FreespeeCallNoteType">FreespeeCallNoteType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/FreespeeUserJourneyEventType.html">FreespeeUserJourneyEventType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/FreespeeCallNote.html">FreespeeCallNote</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FreespeeCallNotes.html">FreespeeCallNotes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FreespeeSegment.html">FreespeeSegment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FreespeeUserJourneyEvent.html">FreespeeUserJourneyEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FreespeeUserJourneyVisitorInfo.html">FreespeeUserJourneyVisitorInfo</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Type Definitions.html">Other Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolution">CallKitLocalizedNameResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolver">CallKitLocalizedNameResolver</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='img-src-https-analytics-freespee-com-images-freespee_logo-svg-alt-freespee-logo' class='heading'><img src="https://analytics.freespee.com/images/freespee_logo.svg" alt="Freespee Logo"></h1>
+<h1 id='freespee-ios-sdk' class='heading'>Freespee iOS SDK</h1>
+
+<p>The Freespee SDK lets your app accept incoming calls routed throught the Freespee Platform.
+The SDK exposes contextual information for incoming calls that you can present in a way that makes sense to your business.</p>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS &gt;= 10.0</li>
+</ul>
+<h2 id='setup' class='heading'>Setup</h2>
+<h3 id='add-the-sdk-to-your-app-project' class='heading'>Add the SDK to your app project</h3>
+
+<p>As per separate instructions from Freespee.</p>
+<h3 id='capabillities' class='heading'>Capabillities</h3>
+
+<p>In order to be able to recive a call you need setup a few app capabillities. First you need to add the following to your <code>Info.plist</code> file.
+Microphone usage description is needed because the SDK uses APIs enabling sound capture.
+The background modes are needed in order for calls to work even when the app is in the background, as well as being woken up by VoIP push notifications.</p>
+<pre class="highlight xml"><code><span class="nt">&lt;key&gt;</span>NSMicrophoneUsageDescription<span class="nt">&lt;/key&gt;</span>
+<span class="nt">&lt;string&gt;</span>YOUR APPS USAGE DESCRIPTION FOR USING THE MICROPHONE<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;key&gt;</span>UIBackgroundModes<span class="nt">&lt;/key&gt;</span>
+<span class="nt">&lt;array&gt;</span>
+<span class="nt">&lt;string&gt;</span>audio<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;string&gt;</span>voip<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/array&gt;</span>
+</code></pre>
+<h3 id='voip-push-notifications' class='heading'>VoIP Push notifications</h3>
+
+<p>You will need to setup a push notification certificate and specify it as a voip certificate in your Apple Developer portal, this certificate needs to be provided to Freespee in order for us to be able to wake up your app in preparation for incoming calls.</p>
+<h3 id='steps' class='heading'>Steps</h3>
+
+<ul>
+<li>Go to <a href="https://developer.apple.com/">https://developer.apple.com/</a></li>
+<li>Make sure your App ID has the Push Notifications service enabled.</li>
+<li>Create a VoIP Services Certificate under Certificates/Production</li>
+</ul>
+
+<p>When you have generated the certificate you will need to provide it to Freespee.
+Export the certificate from Keychain Access by selecting the certificate, and its private key. Right-click and select <q>Export 2 Items</q>.
+Open a terminal and move into the folder where the .p12 file was saved.</p>
+
+<p>Using the <code>openssl</code> command, extract the certificate and private key from the file.</p>
+<pre class="highlight plaintext"><code>$&gt; openssl pkcs12 -in Certificates.p12 -nocerts -out key.pem
+$&gt; openssl rsa -in key.pem -out key.pem
+$&gt; openssl pkcs12 -in Certificates.p12 -clcerts -nokeys -out cert.pem
+</code></pre>
+<h2 id='how-to-use' class='heading'>How to use</h2>
+<h3 id='initialize-the-sdk' class='heading'>Initialize the SDK</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">UIKit</span>
+<span class="kd">import</span> <span class="kt">FreespeeSDK</span>
+
+<span class="kd">@UIApplicationMain</span>
+<span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="kt">UIApplicationDelegate</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span><span class="p">?</span>
+
+    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="kt">Freespee</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="kt">APIKey</span><span class="p">:</span> <span class="s">"API_KEY"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='connecting' class='heading'>Connecting</h3>
+
+<p>Before making outgoing calls or accepting incoming calls you need to connect to Freespee identifying the calling SDK with an identifier, typically a user id or some other identifier that is unique and makes sense to your organization.</p>
+<pre class="highlight swift"><code><span class="kt">Freespee</span><span class="o">.</span><span class="nf">shared</span><span class="p">()?</span><span class="o">.</span><span class="nf">connectIdentifier</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Failed to connect </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<h3 id='call-ui' class='heading'>Call UI</h3>
+
+<p>You need to provide your own UI for the call screen. For calls you will get an instance of a <code><a href="Protocols/FreespeeCall.html">FreespeeCall</a></code> given to you.
+Typically your UI will set itself as the <code><a href="Protocols/FreespeeCallStateChangeListener.html">FreespeeCallStateChangeListener</a></code> so that it can react on changes in the call.
+Refer to the <code><a href="Protocols/FreespeeCall.html">FreespeeCall</a></code> API documentation for actions available.</p>
+<h3 id='listen-to-incoming-calls' class='heading'>Listen to incoming calls</h3>
+
+<p>Add a listener to the SDK which will be called once an incoming call hits the SDK.</p>
+<pre class="highlight swift"><code><span class="kt">Freespee</span><span class="o">.</span><span class="nf">shared</span><span class="p">()?</span><span class="o">.</span><span class="n">incomingCallListener</span> <span class="o">=</span> <span class="k">self</span>
+
+<span class="kd">extension</span> <span class="kt">MyClass</span><span class="p">:</span> <span class="kt">FreespeeIncomingCallListener</span> <span class="p">{</span>
+
+    <span class="kd">func</span> <span class="nf">freespee</span><span class="p">(</span><span class="n">_</span> <span class="nv">freespee</span><span class="p">:</span> <span class="kt">Freespee</span><span class="p">,</span> <span class="n">handleIncomingCall</span> <span class="nv">call</span><span class="p">:</span> <span class="kt">FreespeeCall</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">guard</span> <span class="kt">UIApplication</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">applicationState</span> <span class="o">==</span> <span class="o">.</span><span class="n">background</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Incoming call while app active - present UI and let the UI listen to state changes</span>
+            <span class="nf">presentUI</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="n">call</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Incoming call in the background - listen for state changes</span>
+        <span class="n">call</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="nv">stateChangeListener</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+
+        <span class="c1">// Present a incoming call notification to the user</span>
+        <span class="c1">// NOTE: We can use the Freespee data provided on the call to add additional information to the notification</span>
+
+        <span class="k">let</span> <span class="nv">content</span> <span class="o">=</span> <span class="kt">UNMutableNotificationContent</span><span class="p">()</span>
+
+        <span class="n">content</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">"Incoming call"</span>
+        <span class="n">content</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="s">"Incoming call from </span><span class="se">\(</span><span class="n">call</span><span class="o">.</span><span class="n">peerIdentifier</span><span class="se">)</span><span class="s">"</span>
+        <span class="n">content</span><span class="o">.</span><span class="n">sound</span> <span class="o">=</span> <span class="kt">UNNotificationSound</span><span class="o">.</span><span class="k">default</span>
+        <span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">UNNotificationRequest</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"freespee-call"</span><span class="p">,</span> <span class="nv">content</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span> <span class="nv">trigger</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+        <span class="kt">UNUserNotificationCenter</span><span class="o">.</span><span class="nf">current</span><span class="p">()</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"Failed to schedule local notification </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">freespee</span><span class="p">(</span><span class="n">_</span> <span class="nv">freespee</span><span class="p">:</span> <span class="kt">Freespee</span><span class="p">,</span> <span class="n">applicationDidBecomeActiveWithIncomingCall</span> <span class="nv">call</span><span class="p">:</span> <span class="kt">FreespeeCall</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// No need to listen to state changes here anymore</span>
+        <span class="n">call</span><span class="o">.</span><span class="nf">remove</span><span class="p">(</span><span class="nv">stateChangeListener</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+        <span class="c1">// Present the call to the user</span>
+        <span class="nf">presentUI</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="n">call</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">MyClass</span><span class="p">:</span> <span class="kt">FreespeeCallStateChangeListener</span> <span class="p">{</span>
+
+<span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt">FreespeeCall</span><span class="p">,</span> <span class="n">didChangeStateFrom</span> <span class="nv">oldState</span><span class="p">:</span> <span class="kt">FreespeeCallState</span><span class="p">,</span> <span class="n">to</span> <span class="nv">newState</span><span class="p">:</span> <span class="kt">FreespeeCallState</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">guard</span> <span class="kt">UIApplication</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">applicationState</span> <span class="o">==</span> <span class="o">.</span><span class="n">background</span> <span class="o">&amp;&amp;</span> <span class="n">newState</span> <span class="o">==</span> <span class="o">.</span><span class="n">closed</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+
+    <span class="c1">// Call was closed while app is in background - clear out our incoming call notification and post a missed call notification</span>
+    <span class="kt">UNUserNotificationCenter</span><span class="o">.</span><span class="nf">current</span><span class="p">()</span><span class="o">.</span><span class="nf">removePendingNotificationRequests</span><span class="p">(</span><span class="nv">withIdentifiers</span><span class="p">:</span> <span class="p">[</span><span class="s">"freespee-call"</span><span class="p">])</span>
+    <span class="kt">UNUserNotificationCenter</span><span class="o">.</span><span class="nf">current</span><span class="p">()</span><span class="o">.</span><span class="nf">removeDeliveredNotifications</span><span class="p">(</span><span class="nv">withIdentifiers</span><span class="p">:</span> <span class="p">[</span><span class="s">"freespee-call"</span><span class="p">])</span>
+
+    <span class="k">let</span> <span class="nv">content</span> <span class="o">=</span> <span class="kt">UNMutableNotificationContent</span><span class="p">()</span>
+    <span class="n">content</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">"Missed call"</span>
+    <span class="n">content</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="s">"Missed call from </span><span class="se">\(</span><span class="n">call</span><span class="o">.</span><span class="n">peerIdentifier</span><span class="se">)</span><span class="s">"</span>
+    <span class="n">content</span><span class="o">.</span><span class="n">sound</span> <span class="o">=</span> <span class="kc">nil</span>
+    <span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">UNNotificationRequest</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"missed-freespee-call"</span><span class="p">,</span> <span class="nv">content</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span> <span class="nv">trigger</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="kt">UNUserNotificationCenter</span><span class="o">.</span><span class="nf">current</span><span class="p">()</span><span class="o">.</span><span class="nf">add</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Failed to schedule local notification </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt">FreespeeCall</span><span class="p">,</span> <span class="n">failedWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Call failed </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt">FreespeeCall</span><span class="p">,</span> <span class="n">durationTick</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Not of interest here</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt">FreespeeCall</span><span class="p">,</span> <span class="n">didReceive</span> <span class="nv">segment</span><span class="p">:</span> <span class="kt">FreespeeUserSegment</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="kt">UIApplication</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">applicationState</span> <span class="o">==</span> <span class="o">.</span><span class="n">background</span> <span class="o">&amp;&amp;</span> <span class="n">newState</span> <span class="o">==</span> <span class="o">.</span><span class="n">pending</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+    <span class="c1">// We received segment data for the call - we can update the incoming call notification with data</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt">FreespeeCall</span><span class="p">,</span> <span class="n">didReceive</span> <span class="nv">userJourney</span><span class="p">:</span> <span class="kt">FreespeeUserJourney</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="kt">UIApplication</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">applicationState</span> <span class="o">==</span> <span class="o">.</span><span class="n">background</span> <span class="o">&amp;&amp;</span> <span class="n">newState</span> <span class="o">==</span> <span class="o">.</span><span class="n">pending</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+    <span class="c1">// We received user journey data for the call - we can update the incoming call notification with data</span>
+<span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre>
+<h3 id='handling-contextual-information-for-incoming-calls' class='heading'>Handling contextual information for incoming calls</h3>
+
+<p>Typically the Freespee contextual data is available instantly when a call comes in and provided to your app. You can access this data directly on the <code><a href="Protocols/FreespeeCall.html">FreespeeCall</a></code> instance provided.</p>
+
+<p>However, in some cases the data will be populated slightly after and because of that the <code><a href="Protocols/FreespeeCallStateChangeListener.html">FreespeeCallStateChangeListener</a></code> has two callbacks for when Freespee data is recieved. 
+Your code need to handle this case as well to ensure a great UX for your users.</p>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">MyClass</span><span class="p">:</span> <span class="kt">FreespeeCallStateChangeListener</span> <span class="p">{</span>
+
+<span class="o">...</span>
+
+<span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt">FreespeeCall</span><span class="p">,</span> <span class="n">didReceive</span> <span class="nv">segment</span><span class="p">:</span> <span class="kt">FreespeeUserSegment</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Segment data for the call became available.</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt">FreespeeCall</span><span class="p">,</span> <span class="n">didReceive</span> <span class="nv">userJourney</span><span class="p">:</span> <span class="kt">FreespeeUserJourney</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// User journey data for the call became available.</span>
+<span class="p">}</span>
+
+<span class="p">}</span>
+
+</code></pre>
+
+<p>The available data for a call is detailed in <code><a href="Protocols/FreespeeUserSegment.html">FreespeeUserSegment</a></code> and <code><a href="Protocols/FreespeeUserJourney.html">FreespeeUserJourney</a></code>, you can use this data to do further lookups within your own app domain as needed and then presenting it in the call UI for the incoming call. </p>
+<h3 id='callkit-integration' class='heading'>CallKit Integration</h3>
+
+<p>CallKit integration is currently experimental.</p>
+
+<p>Note that enabling CallKit will limit your posibillities of presenting contextual data as a call comes in because iOS will take ownership of the call screen, at least when the device is locked.</p>
+
+<p>You can enable CallKit on the SDK and the SDK will handle the underlying logic for you.</p>
+<pre class="highlight swift"><code><span class="c1">// You need to supply your own CXProviderConfiguration as only one instance is permitted per app.  </span>
+<span class="k">let</span> <span class="nv">providerConfiguration</span> <span class="o">=</span> <span class="kt">CXProviderConfiguration</span><span class="p">(</span><span class="nv">localizedName</span><span class="p">:</span> <span class="s">"MyApp"</span><span class="p">)</span>
+<span class="n">providerConfiguration</span><span class="o">.</span><span class="n">iconTemplateImageData</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"appIcon"</span><span class="p">)?</span><span class="o">.</span><span class="nf">pngData</span><span class="p">()</span>
+
+<span class="c1">// Enable CallKit</span>
+<span class="kt">Freespee</span><span class="o">.</span><span class="nf">shared</span><span class="p">()?</span><span class="o">.</span><span class="nf">enableCallKit</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="n">providerConfiguration</span><span class="p">)</span>
+
+<span class="c1">// You can add a custom resolver for incoming calls, letting you provide the display name of the caller on the call screen.</span>
+<span class="kt">Freespee</span><span class="o">.</span><span class="nf">shared</span><span class="p">()?</span><span class="o">.</span><span class="n">callKitLocalizedNameResolver</span> <span class="o">=</span> <span class="p">{</span> <span class="p">(</span><span class="nv">call</span><span class="p">:</span> <span class="kt">FreespeeCall</span><span class="p">,</span> <span class="nv">resolve</span><span class="p">:</span> <span class="p">(</span><span class="kt">FreespeeCall</span><span class="p">,</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">self</span><span class="o">.</span><span class="nf">resolveName</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="n">call</span><span class="o">.</span><span class="n">peerIdentifier</span><span class="p">)</span>
+    <span class="nf">resolve</span><span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="s">"John Doe"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Disable CallKit</span>
+<span class="kt">Freespee</span><span class="o">.</span><span class="nf">shared</span><span class="p">()?</span><span class="o">.</span><span class="nf">disableCallKit</span><span class="p">()</span>
+</code></pre>
+<h3 id='error-handling' class='heading'>Error handling</h3>
+
+<p>Most SDK functions will have a callback with an optional error supplied. The error will be on of the errors defined in the <code><a href="Enums/FreespeeError.html">FreespeeError</a></code> enum.
+Refer to the source documentation for the most up to date information on what specific errors are to be expected where, and what they stand for.  </p>
+<h2 id='development' class='heading'>Development</h2>
+<h3 id='xcode-simulator' class='heading'>Xcode Simulator</h3>
+
+<p>When running your app from Xcode it will not be able to recieve VoIP-push and because of that no incoming phone calls will be triggered.
+To allow testing during development you can manually set the SDK in a state where it is constantly listening for incoming calls.
+You still need to connect the SDK first.</p>
+<pre class="highlight swift"><code><span class="kt">Freespee</span><span class="o">.</span><span class="nf">shared</span><span class="p">()?</span><span class="o">.</span><span class="nf">startListeningForIncomingCalls</span><span class="p">({</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Failed to start listening </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"listening"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="kt">Freespee</span><span class="o">.</span><span class="nf">shared</span><span class="p">()?</span><span class="o">.</span><span class="nf">stopListeningForIncomingCalls</span><span class="p">({</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Failed to stop listening </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"stopped listening"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+
+</code></pre>
+<h3 id='apns-environments' class='heading'>APNS Environments</h3>
+
+<p>If your are building your app onto a device from Xcode the app will only accept incoming push notifications in the APNs sandbox environment.
+On the other hand, when distributing your app with Testflight or in the AppStore it will only accept notifications in the production environment.</p>
+
+<p>While the VoIP-certificate you have created can be used for both sandbox and production push notifications, the Freespee backend needs to know what environment to use before hand.
+Because of this you will typically have two different API Keys for the SDK, one which is bound to the sandbox environment and one for production.</p>
+
+<p>Note that when using one API key, you will only be able to communicate with other apps with that same API key. Be sure to not ship your app with an API-key bound to the sandbox environment as push notifications will not work.</p>
+<h3 id='freespee-environment' class='heading'>Freespee Environment</h3>
+
+<p>For tracking down errors and/or testing new functionality you may supply a custom environment for the SDK to connect to.
+Freespee developers will supply the environment URL if this is needed.</p>
+<pre class="highlight swift"><code><span class="kt">Freespee</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="kt">APIKey</span><span class="p">:</span> <span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="nv">environment</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"CUSTOM_ENV_URL"</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+</code></pre>
+<h2 id='support' class='heading'>Support</h2>
+
+<p>Contact developer support on <a href="mailto:mobiledev@freespee.com">mobiledev@freespee.com</a></p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://www.freespee.com" target="_blank" rel="external">Freespee</a>. All rights reserved. (Last updated: 2019-06-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

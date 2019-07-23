@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FreespeeCallStateChangeListener Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Protocol/FreespeeCallStateChangeListener" class="dashAnchor"></a>
+    <a title="FreespeeCallStateChangeListener Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">FreespeeSDK Docs</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">FreespeeSDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        FreespeeCallStateChangeListener Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Main SDK Interface.html">Main SDK Interface</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Freespee.html">Freespee</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FreespeeError.html">FreespeeError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Call handling.html">Call handling</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeCall.html">FreespeeCall</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeCallStateChangeListener.html">FreespeeCallStateChangeListener</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeIncomingCallListener.html">FreespeeIncomingCallListener</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FreespeeCallState.html">FreespeeCallState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FreespeeCallType.html">FreespeeCallType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Incoming call data.html">Incoming call data</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeUserSegment.html">FreespeeUserSegment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeUserJourney.html">FreespeeUserJourney</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Constants.html">Other Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeErrorDomain">FreespeeErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallAnswered">FreespeeUserJourneyEventKeyCallAnswered</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallDuration">FreespeeUserJourneyEventKeyCallDuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallEndDate">FreespeeUserJourneyEventKeyCallEndDate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallEndNumber">FreespeeUserJourneyEventKeyCallEndNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallFromArea">FreespeeUserJourneyEventKeyCallFromArea</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallFromNumber">FreespeeUserJourneyEventKeyCallFromNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallSegmentName">FreespeeUserJourneyEventKeyCallSegmentName</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyCallToNumber">FreespeeUserJourneyEventKeyCallToNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeySMSData">FreespeeUserJourneyEventKeySMSData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeySMSType">FreespeeUserJourneyEventKeySMSType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionBrowser">FreespeeUserJourneyEventKeyWebSessionBrowser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionDevice">FreespeeUserJourneyEventKeyWebSessionDevice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionPlatform">FreespeeUserJourneyEventKeyWebSessionPlatform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionReferrer">FreespeeUserJourneyEventKeyWebSessionReferrer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Constants.html#/c:@FreespeeUserJourneyEventKeyWebSessionURL">FreespeeUserJourneyEventKeyWebSessionURL</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/FreespeeCallEndedReason.html">FreespeeCallEndedReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Enums.html#/c:@E@FreespeeCallNoteType">FreespeeCallNoteType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/FreespeeUserJourneyEventType.html">FreespeeUserJourneyEventType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeCallNote.html">FreespeeCallNote</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeCallNotes.html">FreespeeCallNotes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeSegment.html">FreespeeSegment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeUserJourneyEvent.html">FreespeeUserJourneyEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FreespeeUserJourneyVisitorInfo.html">FreespeeUserJourneyVisitorInfo</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Type Definitions.html">Other Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolution">CallKitLocalizedNameResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolver">CallKitLocalizedNameResolver</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>FreespeeCallStateChangeListener</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">FreespeeCallStateChangeListener</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                </div>
+              </div>
+            <p>Listener for call state changes.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Typically implemented by the handler of the call for performing actions based on the changes.
+
+</div>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)FreespeeCallStateChangeListener(im)freespeeCall:didChangeStateFrom:to:"></a>
+                    <a name="//apple_ref/objc/Method/-freespeeCall:didChangeStateFrom:to:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)FreespeeCallStateChangeListener(im)freespeeCall:didChangeStateFrom:to:">-freespeeCall:didChangeStateFrom:to:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The state changed for the call.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">freespeeCall</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">call</span>
+    <span class="nf">didChangeStateFrom</span><span class="p">:(</span><span class="n"><a href="../Enums/FreespeeCallState.html">FreespeeCallState</a></span><span class="p">)</span><span class="nv">oldState</span>
+                    <span class="nf">to</span><span class="p">:(</span><span class="n"><a href="../Enums/FreespeeCallState.html">FreespeeCallState</a></span><span class="p">)</span><span class="nv">newState</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></span><span class="p">,</span> <span class="n">didChangeStateFrom</span> <span class="nv">oldState</span><span class="p">:</span> <span class="kt"><a href="../Enums/FreespeeCallState.html">FreespeeCallState</a></span><span class="p">,</span> <span class="n">to</span> <span class="nv">newState</span><span class="p">:</span> <span class="kt"><a href="../Enums/FreespeeCallState.html">FreespeeCallState</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>call</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The call itself.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>oldState</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The previous state of the call.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newState</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The new state of the call.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)FreespeeCallStateChangeListener(im)freespeeCall:failedWithError:"></a>
+                    <a name="//apple_ref/objc/Method/-freespeeCall:failedWithError:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)FreespeeCallStateChangeListener(im)freespeeCall:failedWithError:">-freespeeCall:failedWithError:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The call failed. This can happen while the call is being setup.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">freespeeCall</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">call</span>
+     <span class="nf">failedWithError</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="nv">error</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></span><span class="p">,</span> <span class="n">failedWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>call</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The call itself.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error that caused the failure.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)FreespeeCallStateChangeListener(im)freespeeCall:durationTick:"></a>
+                    <a name="//apple_ref/objc/Method/-freespeeCall:durationTick:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)FreespeeCallStateChangeListener(im)freespeeCall:durationTick:">-freespeeCall:durationTick:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called on a regular interval with the duration of the call while it is ongoing.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">freespeeCall</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">call</span>
+        <span class="nf">durationTick</span><span class="p">:(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="nv">duration</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></span><span class="p">,</span> <span class="n">durationTick</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>call</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The call.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>duration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call duration in seconds.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)FreespeeCallStateChangeListener(im)freespeeCall:didReceiveSegment:"></a>
+                    <a name="//apple_ref/objc/Method/-freespeeCall:didReceiveSegment:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)FreespeeCallStateChangeListener(im)freespeeCall:didReceiveSegment:">-freespeeCall:didReceiveSegment:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when the user segment for this call has been resolved.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>If the segment data is already available before the listener is added, this function will never be called.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">freespeeCall</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">call</span>
+    <span class="nf">didReceiveSegment</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/FreespeeUserSegment.html">FreespeeUserSegment</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">segment</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></span><span class="p">,</span> <span class="n">didReceive</span> <span class="nv">segment</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FreespeeUserSegment.html">FreespeeUserSegment</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>call</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The call.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>segment</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The user segment attached to the caller.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)FreespeeCallStateChangeListener(im)freespeeCall:didReceiveUserJourney:"></a>
+                    <a name="//apple_ref/objc/Method/-freespeeCall:didReceiveUserJourney:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)FreespeeCallStateChangeListener(im)freespeeCall:didReceiveUserJourney:">-freespeeCall:didReceiveUserJourney:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when user journey data for this call has been resolved.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>If the user journey data is already available before the listener is added, this funcion will never be called.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">freespeeCall</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">call</span>
+    <span class="nf">didReceiveUserJourney</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/FreespeeUserJourney.html">FreespeeUserJourney</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">userJourney</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">freespeeCall</span><span class="p">(</span><span class="n">_</span> <span class="nv">call</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FreespeeCall.html">FreespeeCall</a></span><span class="p">,</span> <span class="n">didReceive</span> <span class="nv">userJourney</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FreespeeUserJourney.html">FreespeeUserJourney</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>call</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The call.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>userJourney</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The user journey data attached to the caller.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://www.freespee.com" target="_blank" rel="external">Freespee</a>. All rights reserved. (Last updated: 2019-06-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
