@@ -1,3 +1,4 @@
-# Articles
+# Freespee Mobile SDK for iOS
 
-[Developer README](developer-readme/)
+[Developer usage instructions](developer-readme/)
+[API Documentation](api-docs/)

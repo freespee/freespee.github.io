@@ -1,3 +1,4 @@
-# Articles
+# Freespee Mobile SDK for Android
 
-[Developer README](README.md)
+[Developer usage instructions](developer-readme/)
+[API Documentation](api-docs/)
