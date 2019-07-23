@@ -1,294 +1,303 @@
 # ![Freespee Logo](https://analytics.freespee.com/images/freespee_logo.svg)
 
-# Freespee Android SDK
+# Freespee iOS SDK
 
-The Freespee SDK lets your app accept incoming calls routed through the Freespee Platform.
-The SDK exposes contextual information for incoming calls that you can present in a way that makes sense for your business.
+The Freespee SDK lets your app accept incoming calls routed throught the Freespee Platform.
+The SDK exposes contextual information for incoming calls that you can present in a way that makes sense to your business.
 
 ## Requirements
 
-- Android SDK 18
+- iOS >= 10.0
 
 ## Setup
 
 ### Add the SDK to your app project
 
-Copy the provided .AAR-file to the applications libs folder. Then add the following to the app build.gradle file.
+#### Cocoapods
+
+Add this to your `Podfile`, replace `x.y.z` with the latest version.
 
 ```
-repositories {
-    mavenCentral()
-        flatDir {
-        dirs 'libs'
-    }
-}
-
-dependencies {
-    ...
-    implementation 'com.freespee.freespee:freespee@aar'
-}
+  pod 'FreespeeSDK', podspec: 'https://portal.msdk.freespee.com/releases/ios/x.y.z/FreespeeSDK.podspec' 
 ```
+
+#### Manual
+
+* Download the latest release and extract the contents locally.
+* Drag `FreespeeSDK.framework` into the _Embedded Binaries_ section of your target.
+* Add a new _Script Phase_ in our target's _Build Phases_ and make sure this _Run Script Phase_ is below the _Embed Frameworks_ build phase. You can drag and drop build phases to rearrange them.
+
+Paste the following in the script text field:
+```
+bash "$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/FreespeeSDK.framework/strip-frameworks.sh"
+```
+This will strip unnecessary achitectures from the framework to allow app store submission.
 
 ### Capabillities
 
-In order to be able to recive a call you need setup a few app capabillities.
-
-For Android sdk version 23 or higher the application needs to request the runtime permission to access the microphone. 
-Without the proper permissions the SDK will throw a runtime exception causing the application to crash. 
-
-Read more about requesting runtime permissions at the [offical developer portal](https://developer.android.com/training/permissions/requesting).
-
-Furthermore you have to provide your client secret. This is done by adding a <meta-data> tag in your Manifest-file.
-
-```
-<meta-data
-    android:name="com.freespee.sdk.API_KEY"
-    android:value="YOUR-CLIENT-SECRET" />
+In order to be able to recive a call you need setup a few app capabillities. First you need to add the following to your `Info.plist` file.
+Microphone usage description is needed because the SDK uses APIs enabling sound capture.
+The background modes are needed in order for calls to work even when the app is in the background, as well as being woken up by VoIP push notifications.
+```xml
+<key>NSMicrophoneUsageDescription</key>
+<string>YOUR APPS USAGE DESCRIPTION FOR USING THE MICROPHONE</string>
+<key>UIBackgroundModes</key>
+<array>
+<string>audio</string>
+<string>voip</string>
+</array>
 ```
 
-### Push notifications
+### VoIP Push notifications
 
-Push notifications are used to notify the SDK of an incoming call.
-Implementing FCM can be done by using the Android studios assistant or by following this [set-by-step guide](https://firebase.google.com/docs/cloud-messaging/android/client).
+You will need to setup a push notification certificate and specify it as a voip certificate in your Apple Developer portal, this certificate needs to be provided to Freespee in order for us to be able to wake up your app in preparation for incoming calls.
 
-To check if incoming push belongs to Freespee:
+### Steps
 
-```java
-public class MyFirebaseNotificationService extends FirebaseMessagingService {
+- Go to https://developer.apple.com/
+- Make sure your App ID has the Push Notifications service enabled.
+- Create a VoIP Services Certificate under Certificates/Production
 
-    @Override
-    public void onMessageReceived(RemoteMessage remoteMessage) {
-        // Check if this is a Freespee push
-        if (Freespee.isFreespeePushData(remoteMessage.getData())) {
-            // Start service with push data
-            final HashMap<String, String> data = new HashMap<>(remoteMessage.getData());
-            
-            Intent serviceIntent = new Intent(getApplicationContext(), MyFreespeeService.class);
-            serviceIntent.setAction(MyFreespeeService.IMCOMING_PUSH_DATA);
-            serviceIntent.putExtra("push-data", data);
-            
-            getApplicationContext().startService(serviceIntent);
-        }
-    }
-}
+When you have generated the certificate you will need to provide it to Freespee.
+Export the certificate from Keychain Access by selecting the certificate, and its private key. Right-click and select "Export 2 Items".
+Open a terminal and move into the folder where the .p12 file was saved.
 
+Using the `openssl` command, extract the certificate and private key from the file.
 ```
-
-Handle incoming push data inside your service, as shown below:
-
-```java
-public class MyFreespeeService extends Service implements Freespee.OnIncomingCallListener {
-
-    public static final String INCOMING_PUSH_DATA = "MyFreespeeService.INCOMING_PUSH_DATA";
-
-    private Freespee mFreespee;
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent != null && intent.getAction() != null) {
-            switch (intent.getAction()) {
-                
-                // ...
-                
-                // Handle incoming push data
-                case INCOMING_PUSH_DATA: {
-                    if (intent.getExtras() != null && intent.getExtras().containsKey("push-data")) {
-                        final HashMap<String, String> messageData = (HashMap<String, String>) intent.getExtras().getSerializable("push-data");
-
-                        mFreespee.handlePushData(messageData);
-                        mFreespee.setIncomingCallListener(this);
-                    }
-                    break;
-                }
-            }
-        }
-
-        return super.onStartCommand(intent, flags, startId);
-    } 
-
-    // ...
-    
-}
+$> openssl pkcs12 -in Certificates.p12 -nocerts -out key.pem
+$> openssl rsa -in key.pem -out key.pem
+$> openssl pkcs12 -in Certificates.p12 -clcerts -nokeys -out cert.pem
 ```
-
 
 ## How to use
 
 ### Initialize the SDK
 
-We recommend you to implement a service that initializes the SDK and holds an instance of `Freespee`.
+```swift
+import UIKit
+import FreespeeSDK
 
-```java
-public class MyFreespeeService extends Service implements Freespee.OnIncomingCallListener {
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    private Freespee mFreespee;
-    
-    private Freespee.FreespeeClientProvider provider = new Freespee.FreespeeClientProvider() {
-        @Override
-        public Context onProvideContext() {
-            return getApplicationContext();
-        }            
-        
-        @Override
-        @NonNull
-        public String providePushToken() {
-            // Provide your FCM push token here
-        }
-    };
+    var window: UIWindow?
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        mFreespee = Freespee.getInstance(provider);
-    }   
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        Freespee.configure(APIKey: "API_KEY")
+        return true
+    }
 }
 ```
 
 ### Connecting
 
-Before accepting incoming calls you need to connect to Freespee identifying the calling SDK with an identifier, typically a user id or some other identifier that is unique and makes sense to your organization.
+Before making outgoing calls or accepting incoming calls you need to connect to Freespee identifying the calling SDK with an identifier, typically a user id or some other identifier that is unique and makes sense to your organization.
 
-```java
-public class MyFreespeeService extends Service implements Freespee.OnIncomingCallListener {
-
-    private Freespee mFreespee;
-
-    // ...
-
-    public class MyFreespeeServiceBinder extends Binder {
-        
-        private Freespee.OnConnectListener connectListener = new Freespee.OnConnectListener() {
-            @Override
-            public void onStart() {
-                // The SDK is now connected and ready to use
-            }
-            
-            @Override
-            public void onError(FreespeeError error) {
-                // The SDK failed to start with an error
-            }
-        };
-        
-        // ...
-
-        public void connect(String identifier) {
-            try {
-                mFreespee.connect(identifier, connectListener);
-            } catch(FreespeeError error) {
-                // Handle error here
-            }
-        }  
-
-        public void disconnect() {
-            mFreespee.disconnect();
-        }
+```swift
+Freespee.shared()?.connectIdentifier(identifier, completion: { (error) in
+    if let error = error {
+        print("Failed to connect \(error)")
     }
-}
+})
 ```
 
 ### Call UI
 
-You need to provide your own UI for the call. For incoming calls you will get an instance of a `FreespeeCall` given to you.
-Typically your UI will set itself as the `FreespeeCall.StateListener` so that it can react on changes in the call.
+You need to provide your own UI for the call screen. For calls you will get an instance of a `FreespeeCall` given to you.
+Typically your UI will set itself as the `FreespeeCallStateChangeListener` so that it can react on changes in the call.
 Refer to the `FreespeeCall` API documentation for actions available.
+
 
 ### Listen to incoming calls
 
 Add a listener to the SDK which will be called once an incoming call hits the SDK.
 
-```java
-public class MyFreespeeService extends Service implements Freespee.OnIncomingCallListener {
+```swift
+Freespee.shared()?.incomingCallListener = self
 
-    private Freespee mFreespee;
-    private FreespeeCall mCurrentCall;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        // ...
-
-        mFreespee.setIncomingCallListener(this);
+extension MyClass: FreespeeIncomingCallListener {
+    
+    func freespee(_ freespee: Freespee, handleIncomingCall call: FreespeeCall) {
+    
+        guard UIApplication.shared.applicationState == .background else {
+            // Incoming call while app active - present UI and let the UI listen to state changes
+            presentUI(for: call)
+            return
+        }
+        
+        // Incoming call in the background - listen for state changes
+        call.add(stateChangeListener: self)
+        
+        // Present a incoming call notification to the user
+        // NOTE: We can use the Freespee data provided on the call to add additional information to the notification
+        
+        let content = UNMutableNotificationContent()
+    
+        content.title = "Incoming call"
+        content.body = "Incoming call from \(call.peerIdentifier)"
+        content.sound = UNNotificationSound.default
+        let request = UNNotificationRequest(identifier: "freespee-call", content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("Failed to schedule local notification \(error)")
+            }
+        }
+    }
+    
+    func freespee(_ freespee: Freespee, applicationDidBecomeActiveWithIncomingCall call: FreespeeCall) {
+        // No need to listen to state changes here anymore
+        call.remove(stateChangeListener: self)
+        // Present the call to the user
+        presentUI(for: call)
     }
 
-    @Override
-    public void onIncomingCall(FreespeeCall call) {
-        mCurrentCall = call;
-        mCurrentCall.addCallListener(new MyCallStateListener());
+}
 
-        // Show incoming call UI
-    }  
+extension MyClass: FreespeeCallStateChangeListener {
 
-    public class MyCallStateListener implements FreespeeCall.StateListener {
-        @Override
-        public void onUserJourneyAvailable(FreespeeCall call) {
-            
+func freespeeCall(_ call: FreespeeCall, didChangeStateFrom oldState: FreespeeCallState, to newState: FreespeeCallState) {
+    
+    guard UIApplication.shared.applicationState == .background && newState == .closed else { return }
+    
+    // Call was closed while app is in background - clear out our incoming call notification and post a missed call notification
+    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["freespee-call"])
+    UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["freespee-call"])
+
+    let content = UNMutableNotificationContent()
+    content.title = "Missed call"
+    content.body = "Missed call from \(call.peerIdentifier)"
+    content.sound = nil
+    let request = UNNotificationRequest(identifier: "missed-freespee-call", content: content, trigger: nil)
+    UNUserNotificationCenter.current().add(request) { (error) in
+        if let error = error {
+            print("Failed to schedule local notification \(error)")
         }
-
-        @Override
-        public void onSegmentDataAvailable(FreespeeCall call) {
-
-        }
-
-        @Override
-        public void onRinging(FreespeeCall call) {
-
-        }
-
-        @Override
-        public void onCallEstablished(FreespeeCall call) {
-            startCallActivity();
-            mNotificationManager.removeNotifications();
-            mNotificationManager.updateInCallNotification(call);
-        }
-
-        @Override
-        public void onCallEnded(FreespeeCall call, String reason) {
-            mNotificationManager.removeNotifications();
-            stopForeground(true);
-            stopSelf();
-        }
-
-        @Override
-        public void onCallError(FreespeeError error) {
-            mNotificationManager.removeNotifications();
-            stopForeground(true);
-            stopSelf();
-        }   
     }
 }
-```
 
+func freespeeCall(_ call: FreespeeCall, failedWithError error: Error) {
+    print("Call failed \(error)")
+}
+
+func freespeeCall(_ call: FreespeeCall, durationTick duration: TimeInterval) {
+    // Not of interest here
+}
+
+func freespeeCall(_ call: FreespeeCall, didReceive segment: FreespeeUserSegment) {
+    guard UIApplication.shared.applicationState == .background && newState == .pending else { return }
+    // We received segment data for the call - we can update the incoming call notification with data
+}
+
+func freespeeCall(_ call: FreespeeCall, didReceive userJourney: FreespeeUserJourney) {
+    guard UIApplication.shared.applicationState == .background && newState == .pending else { return }
+    // We received user journey data for the call - we can update the incoming call notification with data
+}
+
+}
+
+```
 ### Handling contextual information for incoming calls
 
-The `FreespeeCall.StateListener` has two callbacks for when Freespee data is recieved for the call. Typically this information is available instantly when a call comes in.
+Typically the Freespee contextual data is available instantly when a call comes in and provided to your app. You can access this data directly on the `FreespeeCall` instance provided.
 
-```java
-public class MyCallStateListener implements FreespeeCall.StateListener {
-    @Override
-    public void onUserJourneyAvailable(FreespeeCall call) {
-        // User journey data for the call is available.
-    }
+However, in some cases the data will be populated slightly after and because of that the `FreespeeCallStateChangeListener` has two callbacks for when Freespee data is recieved. 
+Your code need to handle this case as well to ensure a great UX for your users.
 
-    @Override
-    public void onSegmentDataAvailable(FreespeeCall call) {
-        // Segment data for the call is available.
-    }
+```swift
+extension MyClass: FreespeeCallStateChangeListener {
 
-    // ...
+...
+
+func freespeeCall(_ call: FreespeeCall, didReceive segment: FreespeeUserSegment) {
+    // Segment data for the call became available.
+}
+
+func freespeeCall(_ call: FreespeeCall, didReceive userJourney: FreespeeUserJourney) {
+    // User journey data for the call became available.
+}
 
 }
+
 ```
 
-The available data for a call is detailed in `com.freespee.freespee.data.segment.Segment` and `com.freespee.freespee.data.journey.UserJourney`, 
-you can use this data to do further lookups within your own app domain as needed and then presenting it in the call UI for the incoming call. 
+The available data for a call is detailed in `FreespeeUserSegment` and `FreespeeUserJourney`, you can use this data to do further lookups within your own app domain as needed and then presenting it in the call UI for the incoming call. 
+
+### CallKit Integration
+
+CallKit integration is currently experimental.
+
+Note that enabling CallKit will limit your posibillities of presenting contextual data as a call comes in because iOS will take ownership of the call screen, at least when the device is locked.
+
+You can enable CallKit on the SDK and the SDK will handle the underlying logic for you.
+
+```swift
+// You need to supply your own CXProviderConfiguration as only one instance is permitted per app.  
+let providerConfiguration = CXProviderConfiguration(localizedName: "MyApp")
+providerConfiguration.iconTemplateImageData = UIImage(named: "appIcon")?.pngData()
+
+// Enable CallKit
+Freespee.shared()?.enableCallKit(with: providerConfiguration)
+
+// You can add a custom resolver for incoming calls, letting you provide the display name of the caller on the call screen.
+Freespee.shared()?.callKitLocalizedNameResolver = { (call: FreespeeCall, resolve: (FreespeeCall, String) -> Void) in
+    self.resolveName(for: call.peerIdentifier)
+    resolve(call, "John Doe")
+}
+
+// Disable CallKit
+Freespee.shared()?.disableCallKit()
+```
 
 ### Error handling
 
-The SDK uses the `FreespeeError` class to represent errors that can occur. 
-To differentiate between different errors all FreespeeErrors have a distinct type (`FreespeeError.Type`). The type can be fetched by calling error.getType() on an error.
+Most SDK functions will have a callback with an optional error supplied. The error will be on of the errors defined in the `FreespeeError` enum.
 Refer to the source documentation for the most up to date information on what specific errors are to be expected where, and what they stand for.  
+
+## Development
+
+### Xcode Simulator
+
+When running your app from Xcode it will not be able to recieve VoIP-push and because of that no incoming phone calls will be triggered.
+To allow testing during development you can manually set the SDK in a state where it is constantly listening for incoming calls.
+You still need to connect the SDK first.
+
+```swift
+Freespee.shared()?.startListeningForIncomingCalls({ (error) in
+    if let error = error {
+        print("Failed to start listening \(error)")
+        } else {
+        print("listening")
+    }
+})
+
+Freespee.shared()?.stopListeningForIncomingCalls({ (error) in
+    if let error = error {
+        print("Failed to stop listening \(error)")
+    } else {
+        print("stopped listening")
+    }
+})
+
+```
+
+### APNS Environments
+
+If your are building your app onto a device from Xcode the app will only accept incoming push notifications in the APNs sandbox environment.
+On the other hand, when distributing your app with Testflight or in the AppStore it will only accept notifications in the production environment.
+
+While the VoIP-certificate you have created can be used for both sandbox and production push notifications, the Freespee backend needs to know what environment to use before hand.
+Because of this you will typically have two different API Keys for the SDK, one which is bound to the sandbox environment and one for production.
+
+Note that when using one API key, you will only be able to communicate with other apps with that same API key. Be sure to not ship your app with an API-key bound to the sandbox environment as push notifications will not work.
+
+### Freespee Environment
+
+For tracking down errors and/or testing new functionality you may supply a custom environment for the SDK to connect to.
+Freespee developers will supply the environment URL if this is needed.
+
+```swift
+Freespee.configure(APIKey: "MY_API_KEY", environment: URL(string: "CUSTOM_ENV_URL")!)
+```
 
 ## Support
 
