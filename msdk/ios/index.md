@@ -1,3 +1,3 @@
 # Articles
 
-[Developer README](README.md)
+[Developer README](developer-readme/)
