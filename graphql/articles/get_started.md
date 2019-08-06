@@ -1,1 +1,0 @@
-# Freespee GraphQL - Get started

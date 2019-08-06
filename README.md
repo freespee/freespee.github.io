@@ -1,4 +1,5 @@
 # freespee.github.io
 
-[GraphQL](grapql/)
-[MSDK](msdk/)
+[API-docs](api-docs/)
+
+[Articles](articles/)

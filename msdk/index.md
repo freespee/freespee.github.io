@@ -1,5 +1,0 @@
-# Freespee Mobile SDK
-
-[Articles](articles/)
-
-[API-docs](api-docs/)
