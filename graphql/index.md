@@ -1,4 +1,4 @@
-# Freespee Mobile SDK
+# Freespee GraphQL
 
 [Articles](articles/)
 
