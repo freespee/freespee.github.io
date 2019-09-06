@@ -1,5 +1,3 @@
 # Freespee Mobile SDK - Articles
 
-[Android](android/)
-
-[iOS](ios/)
+[PM2](pm2/)
