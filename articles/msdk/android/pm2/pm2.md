@@ -1,4 +1,4 @@
-# ![Freespee Logo](https://analytics.freespee.com/images/freespee_logo.svg)
+# ![Freespee Logo](https://www.freespee.com/wp-content/uploads/2019/07/Vector-Logo_White.png =250x250)
 
 # Freespee Android SDK PM2
 
