@@ -1,5 +1,7 @@
 # Freespee Mobile SDK - API docs
 
-[Android](android/)
+[Android Readme](../../articles/android/readme.md)
+[Android Reference](android/)
 
-[iOS](ios/)
+[iOS Readme](../../articles/ios/readme.md)
+[iOS Reference](ios/)
