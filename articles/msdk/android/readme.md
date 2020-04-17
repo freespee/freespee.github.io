@@ -13,6 +13,29 @@ The SDK exposes contextual information for incoming calls that you can present i
 
 ### Add the SDK to your app project
 
+#### Gradle
+
+Update your gradle configuration as shown below and replace `x.y.z` with the latest version.
+
+```
+repositories {
+    google()
+    jcenter()
+    ...
+
+    maven {
+        url 'https://portal.msdk.freespee.com/releases/android/'
+    }
+}
+
+dependencies {
+    ...
+    implementation 'com.freespee:freespee:x.y.z@aar'
+}
+```
+
+#### Manual
+
 Copy the provided .AAR-file to the applications libs folder. Then add the following to the app build.gradle file.
 
 ```
@@ -134,6 +157,12 @@ public class MyFreespeeService extends Service implements Freespee.OnIncomingCal
         public String providePushToken() {
             // Provide your FCM push token here
         }
+        
+        @NonNull
+        public String provideUserCredential() {
+            // Provide your user credential here.
+            // The credential is a JWT token generated in backend and signed with pre-shared secret (more info below)
+        }    
     };
 
     @Override
@@ -143,6 +172,22 @@ public class MyFreespeeService extends Service implements Freespee.OnIncomingCal
         mFreespee = Freespee.getInstance(provider);
     }   
 }
+```
+
+### Providing a user credential
+
+As part of connecting the user the SDK will ask for a credential which is used in the authentication flow.
+During development you can use the `UserCredential` class to generate a secret in-app. This is however not recommended for production use.
+For Play Store builds of your app you should generate the credential server-side in your application backend and then fetch it from there before returning it back to the SDK.
+
+The credential is a JWT token signed with the API Secret. Pseudo code for generating a user credential below.
+
+```
+
+let payload = ["userId": "+46701234567"]
+let secret = "MY_SECRET"
+let credential = JWTToken(payload: payload, secret: secret, alg: HS256)
+
 ```
 
 ### Connecting
@@ -174,7 +219,7 @@ public class MyFreespeeService extends Service implements Freespee.OnIncomingCal
 
         public void connect(String identifier) {
             try {
-                mFreespee.connect(identifier, connectListener);
+                mFreespee.connect(connectListener);
             } catch(FreespeeError error) {
                 // Handle error here
             }
