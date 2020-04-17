@@ -48,13 +48,7 @@
                 <a href="Protocols/FreespeeCallStateChangeListener.html">FreespeeCallStateChangeListener</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/FreespeeIncomingCallListener.html">FreespeeIncomingCallListener</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Enums/FreespeeCallState.html">FreespeeCallState</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/FreespeeCallType.html">FreespeeCallType</a>
               </li>
             </ul>
           </li>
@@ -66,6 +60,14 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/FreespeeUserJourney.html">FreespeeUserJourney</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/FreespeeUserCredential.html">FreespeeUserCredential</a>
               </li>
             </ul>
           </li>
@@ -129,9 +131,6 @@
                 <a href="Enums/FreespeeCallEndedReason.html">FreespeeCallEndedReason</a>
               </li>
               <li class="nav-group-task">
-                <a href="Other Enums.html#/c:@E@FreespeeCallNoteType">FreespeeCallNoteType</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Enums/FreespeeUserJourneyEventType.html">FreespeeUserJourneyEventType</a>
               </li>
             </ul>
@@ -140,10 +139,7 @@
             <a href="Other Protocols.html">Other Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/FreespeeCallNote.html">FreespeeCallNote</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/FreespeeCallNotes.html">FreespeeCallNotes</a>
+                <a href="Protocols/FreespeeDelegate.html">FreespeeDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/FreespeeSegment.html">FreespeeSegment</a>
@@ -153,17 +149,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/FreespeeUserJourneyVisitorInfo.html">FreespeeUserJourneyVisitorInfo</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Other Type Definitions.html">Other Type Definitions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolution">CallKitLocalizedNameResolution</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolver">CallKitLocalizedNameResolver</a>
               </li>
             </ul>
           </li>
@@ -182,9 +167,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)FreespeeCallNote"></a>
-                    <a name="//apple_ref/objc/Protocol/FreespeeCallNote" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)FreespeeCallNote">FreespeeCallNote</a>
+                    <a name="/c:objc(pl)FreespeeDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/FreespeeDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)FreespeeDelegate">FreespeeDelegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -192,53 +177,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents an editable call note.</p>
+                        <p>Delegate for the Freespee SDK.</p>
 
-                        <a href="Protocols/FreespeeCallNote.html" class="slightly-smaller">See more</a>
+                        <a href="Protocols/FreespeeDelegate.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">FreespeeCallNote</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">FreespeeDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FreespeeCallNote</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(pl)FreespeeCallNotes"></a>
-                    <a name="//apple_ref/objc/Protocol/FreespeeCallNotes" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)FreespeeCallNotes">FreespeeCallNotes</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Represents call notes that can be submitted during or after a call has finished.</p>
-
-                        <a href="Protocols/FreespeeCallNotes.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">FreespeeCallNotes</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FreespeeCallNotes</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FreespeeDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
 
                         </div>
                       </div>
@@ -270,12 +222,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">FreespeeSegment</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">FreespeeSegment</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="p">,</span> <span class="n">NSCoding</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FreespeeSegment</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FreespeeSegment</span> <span class="p">:</span> <span class="kt">NSCoding</span><span class="p">,</span> <span class="kt">NSObjectProtocol</span></code></pre>
 
                         </div>
                       </div>
@@ -307,12 +259,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">FreespeeUserJourneyVisitorInfo</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">FreespeeUserJourneyVisitorInfo</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="p">,</span> <span class="n">NSCoding</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FreespeeUserJourneyVisitorInfo</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FreespeeUserJourneyVisitorInfo</span> <span class="p">:</span> <span class="kt">NSCoding</span><span class="p">,</span> <span class="kt">NSObjectProtocol</span></code></pre>
 
                         </div>
                       </div>
@@ -351,12 +303,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">FreespeeUserJourneyEvent</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">FreespeeUserJourneyEvent</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="p">,</span> <span class="n">NSCoding</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FreespeeUserJourneyEvent</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">FreespeeUserJourneyEvent</span> <span class="p">:</span> <span class="kt">NSCoding</span><span class="p">,</span> <span class="kt">NSObjectProtocol</span></code></pre>
 
                         </div>
                       </div>
@@ -368,7 +320,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://www.freespee.com" target="_blank" rel="external">Freespee</a>. All rights reserved. (Last updated: 2019-06-24)</p>
+          <p>&copy; 2019 <a class="link" href="https://www.freespee.com" target="_blank" rel="external">Freespee</a>. All rights reserved. (Last updated: 2019-12-20)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

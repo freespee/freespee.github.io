@@ -48,13 +48,7 @@
                 <a href="../Protocols/FreespeeCallStateChangeListener.html">FreespeeCallStateChangeListener</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/FreespeeIncomingCallListener.html">FreespeeIncomingCallListener</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/FreespeeCallState.html">FreespeeCallState</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Enums/FreespeeCallType.html">FreespeeCallType</a>
               </li>
             </ul>
           </li>
@@ -66,6 +60,14 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/FreespeeUserJourney.html">FreespeeUserJourney</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/FreespeeUserCredential.html">FreespeeUserCredential</a>
               </li>
             </ul>
           </li>
@@ -129,9 +131,6 @@
                 <a href="../Enums/FreespeeCallEndedReason.html">FreespeeCallEndedReason</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Other Enums.html#/c:@E@FreespeeCallNoteType">FreespeeCallNoteType</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/FreespeeUserJourneyEventType.html">FreespeeUserJourneyEventType</a>
               </li>
             </ul>
@@ -140,10 +139,7 @@
             <a href="../Other Protocols.html">Other Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/FreespeeCallNote.html">FreespeeCallNote</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/FreespeeCallNotes.html">FreespeeCallNotes</a>
+                <a href="../Protocols/FreespeeDelegate.html">FreespeeDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/FreespeeSegment.html">FreespeeSegment</a>
@@ -153,17 +149,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/FreespeeUserJourneyVisitorInfo.html">FreespeeUserJourneyVisitorInfo</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Other Type Definitions.html">Other Type Definitions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolution">CallKitLocalizedNameResolution</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Other Type Definitions.html#/c:Freespee.h@T@CallKitLocalizedNameResolver">CallKitLocalizedNameResolver</a>
               </li>
             </ul>
           </li>
@@ -248,38 +233,6 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Enums/FreespeeCallState.html">FreespeeCallState</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(pl)FreespeeCall(py)type"></a>
-                    <a name="//apple_ref/objc/Property/type" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)FreespeeCall(py)type">type</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The type of call.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Enums/FreespeeCallType.html">FreespeeCallType</a></span> <span class="n">type</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/FreespeeCallType.html">FreespeeCallType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -399,44 +352,6 @@ by acting on the proper callbacks in the <code><a href="../Protocols/FreespeeCal
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)FreespeeCall(py)notes"></a>
-                    <a name="//apple_ref/objc/Property/notes" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)FreespeeCall(py)notes">notes</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Call notes for the call.
-Used for collecting data about the call that can be submitted back to Freespee.</p>
-<div class="aside aside-note">
-    <p class="aside-title">Note</p>
-    The call note fields are configurable within the Freespee platform and needs to be setup before use. If no fields are configured this property will be nil.
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/FreespeeCallNotes.html">FreespeeCallNotes</a></span><span class="o">&gt;</span> <span class="n">notes</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">notes</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FreespeeCallNotes.html">FreespeeCallNotes</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/c:objc(pl)FreespeeCall(py)peerIdentifier"></a>
                     <a name="//apple_ref/objc/Property/peerIdentifier" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(pl)FreespeeCall(py)peerIdentifier">peerIdentifier</a>
@@ -447,7 +362,7 @@ Used for collecting data about the call that can be submitted back to Freespee.<
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The identifier of the peer in this call as defined by either a phone number or the identifier connected to the SDK.</p>
+                        <p>The phone number of the remote party of this call.</p>
 
                       </div>
                       <div class="declaration">
@@ -533,6 +448,38 @@ Used for collecting data about the call that can be submitted back to Freespee.<
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:objc(pl)FreespeeCall(py)duration"></a>
+                    <a name="//apple_ref/objc/Property/duration" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)FreespeeCall(py)duration">duration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Duration of the call.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSTimeInterval</span> <span class="n">duration</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:objc(pl)FreespeeCall(im)hangup"></a>
                     <a name="//apple_ref/objc/Method/-hangup" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(pl)FreespeeCall(im)hangup">-hangup</a>
@@ -585,7 +532,7 @@ The call will move into the closed state once finished.</p>
 The call will move into the ongoing state once finished.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
-    Calling this when the call is not pending, or on an outgoing call, will have no effect.
+    Calling this when the call is not pending will have no effect.
 
 </div>
 
@@ -751,7 +698,7 @@ The call will move into the ongoing state once finished.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://www.freespee.com" target="_blank" rel="external">Freespee</a>. All rights reserved. (Last updated: 2019-06-24)</p>
+          <p>&copy; 2019 <a class="link" href="https://www.freespee.com" target="_blank" rel="external">Freespee</a>. All rights reserved. (Last updated: 2019-12-20)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

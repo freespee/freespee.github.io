@@ -35,9 +35,10 @@ This will strip unnecessary achitectures from the framework to allow app store s
 
 ### Capabillities
 
-In order to be able to recive a call you need setup a few app capabillities. First you need to add the following to your `Info.plist` file.
-Microphone usage description is needed because the SDK uses APIs enabling sound capture.
-The background modes are needed in order for calls to work even when the app is in the background, as well as being woken up by VoIP push notifications.
+In order to be able to recive a call you need setup a few app capabillities. 
+
+First you need to add the following to your `Info.plist` file.
+
 ```xml
 <key>NSMicrophoneUsageDescription</key>
 <string>YOUR APPS USAGE DESCRIPTION FOR USING THE MICROPHONE</string>
@@ -47,6 +48,11 @@ The background modes are needed in order for calls to work even when the app is 
 <string>voip</string>
 </array>
 ```
+
+Microphone usage description is needed because the SDK uses APIs enabling sound capture.
+The background modes are needed in order for calls to work even when the app is in the background, as well as being woken up by VoIP push notifications.
+
+Second, you need to add the Push Notifications capabillity to your app, so that the SDK can receive VoIP push notifications.
 
 ### VoIP Push notifications
 
@@ -58,7 +64,6 @@ You will need to setup a push notification certificate and specify it as a voip 
 - Make sure your App ID has the Push Notifications service enabled.
 - Create a VoIP Services Certificate under Certificates/Production
 
-When you have generated the certificate you will need to provide it to Freespee.
 Export the certificate from Keychain Access by selecting the certificate, and its private key. Right-click and select "Export 2 Items".
 Open a terminal and move into the folder where the .p12 file was saved.
 
@@ -69,9 +74,29 @@ $> openssl rsa -in key.pem -out key.pem
 $> openssl pkcs12 -in Certificates.p12 -clcerts -nokeys -out cert.pem
 ```
 
+You should end up with a key and cert, looking something like this:
+
+```
+-----BEGIN CERTIFICATE REQUEST-----
+...lines of text here...
+-----END CERTIFICATE REQUEST-----
+```
+
+```
+-----BEGIN RSA PRIVATE KEY-----
+...lines of text here...
+-----END RSA PRIVATE KEY-----
+```
+
+These should be provided to Freespee according to communicated instructions.
+
 ## How to use
 
+Please refer to the Example App reference implementation for a full SDK integration example.
+
 ### Initialize the SDK
+
+Configure the SDK with your pre shared API Key.
 
 ```swift
 import UIKit
@@ -89,16 +114,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-### Connecting
+### Connecting and providing a user credential
 
-Before making outgoing calls or accepting incoming calls you need to connect to Freespee identifying the calling SDK with an identifier, typically a user id or some other identifier that is unique and makes sense to your organization.
+
+Before accepting incoming calls you need to connect the SDK to Freespee - linking the running instance with a user identifier. The identifier can be any arbitrary identifier unique to your application user.
+Make sure to setup the `FreespeeDelegate` before calling `connect` as the registration will ask the delegate for a user credential as part of the process. The credential returned will dictate what user identifier is connected to the SDK.
 
 ```swift
-Freespee.shared()?.connectIdentifier(identifier, completion: { (error) in
+
+Freespee.shared().delegate = self
+
+Freespee.shared()?.connect({ (error) in
     if let error = error {
         print("Failed to connect \(error)")
     }
 })
+
+extension MyClass: FreespeeDelegate {
+    
+    ...
+    
+    func freespee(_ freespee: Freespee, provideCredential callback: @escaping (String?) -> Void) {
+        let userIdentifier = ...
+        let credential = try? FreespeeCredential.generate(withSecret: "MY_SECRET", userIdentifier: userIdentifier)
+        callback()
+    }
+    
+}
+
+```
+The connected user identifier will now be reachable for Freespee calls routed to your application.
+
+During development you can use the `FreespeeUserCredential` class to generate a credential in-app. However, this is not recommended for production use.
+For AppStore builds of your app you should generate the credential server-side in your application backend and fetch it in `provideUserCredential`.
+
+### Generating a user credential
+
+The credential is a JWT token signed with the API Secret. Pseudo code for generating a user credential below.
+
+```swift
+
+let payload = ["userId": "USER_ID"]
+let secret = "MY_SECRET"
+let credential = JWTToken(payload: payload, secret: secret, alg: HS256)
+
 ```
 
 ### Call UI
@@ -107,48 +166,149 @@ You need to provide your own UI for the call screen. For calls you will get an i
 Typically your UI will set itself as the `FreespeeCallStateChangeListener` so that it can react on changes in the call.
 Refer to the `FreespeeCall` API documentation for actions available.
 
-
 ### Listen to incoming calls
 
-Add a listener to the SDK which will be called once an incoming call hits the SDK.
+#### Setup a PushKit registry and forward data to Freespee.
 
 ```swift
-Freespee.shared()?.incomingCallListener = self
 
-extension MyClass: FreespeeIncomingCallListener {
+let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
+pushRegistry.delegate = self
+pushRegistry.desiredPushTypes = [.voIP]
+
+extension AppDelegate: PKPushRegistryDelegate {
+    
+    func pushRegistry(_ registry: PKPushRegistry, didUpdate pushCredentials: PKPushCredentials, for type: PKPushType) {
+        guard type == .voIP else { return }
+        let deviceToken = pushCredentials.token.map { String(format: "%02x", $0) }.joined()
+        Freespee.shared()?.registerDeviceToken(deviceToken)
+    }
+    
+    func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType, completion: @escaping () -> Void) {
+        guard type == .voIP else { return }
+        Freespee.shared()?.handleIncomingNotification(payload.dictionaryPayload)
+        completion()
+    }
+    
+    func pushRegistry(_ registry: PKPushRegistry, didInvalidatePushTokenFor type: PKPushType) {
+        guard type == .voIP else { return }
+        Freespee.shared()?.unregisterDeviceToken()
+    }
+    
+}
+
+```
+
+#### Regarding changes to VoIP push notifications in iOS 13.
+
+As of iOS 13 Apple introduced new rules for VoIP push notifications. When receiving an incoming VoIP push, an app is now expected to report a new incoming call to CallKit, before the  `registry:didReceiveIncomingPushWith:completion` function completes.
+If your app fails to do so it will be terminated, and if continuously failing it might stop recieving VoIP push completely.
+
+When calling `Freespee.shared()?.handleIncomingNotification(payload.dictionaryPayload)` with a valid freespee VoIP payload, a call to the function `freespee:handleIncomingCall` of your delegate will be made synchronously. 
+In this callback you should report the call to CallKit. See example code below. You can then safely call `completion()` as shown in the example above.
+
+#### Setup CallKit integration.
+
+```swift
+
+/// Callback block for when call is connecting
+var callConnectingCallback: ((_ success: Bool) -> Void)?
+var current: FreespeeCall?
+
+let providerConfiguration = CXProviderConfiguration(localizedName: "MyApp")
+providerConfiguration.iconTemplateImageData = UIImage(named: "app-icon")?.pngData()
+providerConfiguration.maximumCallGroups = 1
+providerConfiguration.maximumCallsPerCallGroup = 1
+
+let callKitProvider = CXProvider(configuration: providerConfiguration)
+callKitProvider.setDelegate(self, queue: DispatchQueue.main)
+
+extension CallController: CXProviderDelegate {
+    
+    func providerDidReset(_ provider: CXProvider) {
+        current?.hangup()
+    }
+    
+    func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
+        Freespee.shared()?.didActivateAudioSession()
+    }
+    
+    func provider(_ provider: CXProvider, didDeactivate audioSession: AVAudioSession) {}
+    
+    func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
+        assert(current != nil)
+        assert(action.callUUID == current?.uuid)
+        
+        callConnectingCallback = { (success) in
+            print("fulfilling anwer call action \(success)")
+            if success {
+                action.fulfill()
+            } else {
+                action.fail()
+            }
+        }
+        current?.answer()
+    }
+    
+    func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
+        assert(current != nil)
+        assert(action.callUUID == current?.uuid)
+        
+        current?.hangup()
+        action.fulfill()
+    }
+}
+
+
+```
+
+#### Implement SDK delegate function which will be called once an incoming call hits the SDK.
+
+```swift
+
+/// Callback block for when call is connecting
+var callConnectingCallback: ((_ success: Bool) -> Void)?
+var current: FreespeeCall?
+
+Freespee.shared()?.delegate = self
+
+private func startTrackingCall(_ call: FreespeeCall) {
+    call.add(stateChangeListener: self)
+    self.current = call
+}
+
+private func stopTrackingCall() {
+    self.current?.remove(stateChangeListener: self)
+    self.current = nil
+}
+
+extension MyClass: FreespeeDelegate {
+    
+    ....
     
     func freespee(_ freespee: Freespee, handleIncomingCall call: FreespeeCall) {
     
-        guard UIApplication.shared.applicationState == .background else {
-            // Incoming call while app active - present UI and let the UI listen to state changes
-            presentUI(for: call)
-            return
-        }
+        // Report incoming call to CallKit
+        let callHandle = CXHandle(type: .phoneNumber, value: call.peerIdentifier)
+
+        let callUpdate = CXCallUpdate()
+        callUpdate.remoteHandle = callHandle
+        callUpdate.supportsDTMF = false
+        callUpdate.supportsHolding = false
+        callUpdate.supportsGrouping = false
+        callUpdate.supportsUngrouping = false
+        callUpdate.hasVideo = false
         
-        // Incoming call in the background - listen for state changes
-        call.add(stateChangeListener: self)
-        
-        // Present a incoming call notification to the user
-        // NOTE: We can use the Freespee data provided on the call to add additional information to the notification
-        
-        let content = UNMutableNotificationContent()
-    
-        content.title = "Incoming call"
-        content.body = "Incoming call from \(call.peerIdentifier)"
-        content.sound = UNNotificationSound.default
-        let request = UNNotificationRequest(identifier: "freespee-call", content: content, trigger: nil)
-        UNUserNotificationCenter.current().add(request) { (error) in
+        callKitProvider.reportNewIncomingCall(with: call.uuid, update: callUpdate) { error in
             if let error = error {
-                print("Failed to schedule local notification \(error)")
+                print("Failed to report incoming call: \(error.localizedDescription).")
+            } else {
+                print("Incoming call reported.")
             }
         }
-    }
-    
-    func freespee(_ freespee: Freespee, applicationDidBecomeActiveWithIncomingCall call: FreespeeCall) {
-        // No need to listen to state changes here anymore
-        call.remove(stateChangeListener: self)
-        // Present the call to the user
-        presentUI(for: call)
+        
+        startTrackingCall(call)
+        presentCall(call)
     }
 
 }
@@ -157,51 +317,61 @@ extension MyClass: FreespeeCallStateChangeListener {
 
 func freespeeCall(_ call: FreespeeCall, didChangeStateFrom oldState: FreespeeCallState, to newState: FreespeeCallState) {
     
-    guard UIApplication.shared.applicationState == .background && newState == .closed else { return }
-    
-    // Call was closed while app is in background - clear out our incoming call notification and post a missed call notification
-    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["freespee-call"])
-    UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["freespee-call"])
-
-    let content = UNMutableNotificationContent()
-    content.title = "Missed call"
-    content.body = "Missed call from \(call.peerIdentifier)"
-    content.sound = nil
-    let request = UNNotificationRequest(identifier: "missed-freespee-call", content: content, trigger: nil)
-    UNUserNotificationCenter.current().add(request) { (error) in
-        if let error = error {
-            print("Failed to schedule local notification \(error)")
-        }
+    // The call started connecting
+    if oldState == .pending && newState == .connecting {
+        callConnectingCallback?(true)
+        callConnectingCallback = nil
     }
+    
+    // The call closed
+    if newState == .closed {
+        
+        stopTrackingCall()
+        
+        // The call was missed
+        if oldState == .pending {
+            callConnectingCallback?(false) // Report back to CallKit
+            callConnectingCallback = nil
+            postMissedCallNotification(for: call)
+        }
+        
+        // Report to CallKit when and why the call ended.
+        var reason: CXCallEndedReason?
+        switch call.endedReason {
+        case .answeredElsewhere: reason = .answeredElsewhere
+        case .failed: reason = .failed
+        case .remoteEnded: reason = .remoteEnded
+        case .unanswered: reason = .unanswered
+        case .localEnded: break // If ending the call locally, CallKit already knows.
+        @unknown default:
+            fatalError()
+        }
+        if let reason = reason {
+            callKitProvider.reportCall(with: call.uuid, endedAt: Date(), reason: reason)
+        }
+        
+    }
+    
 }
 
 func freespeeCall(_ call: FreespeeCall, failedWithError error: Error) {
     print("Call failed \(error)")
 }
 
-func freespeeCall(_ call: FreespeeCall, durationTick duration: TimeInterval) {
-    // Not of interest here
-}
+func freespeeCall(_ call: FreespeeCall, durationTick duration: TimeInterval) {}
 
-func freespeeCall(_ call: FreespeeCall, didReceive segment: FreespeeUserSegment) {
-    guard UIApplication.shared.applicationState == .background && newState == .pending else { return }
-    // We received segment data for the call - we can update the incoming call notification with data
-}
+func freespeeCall(_ call: FreespeeCall, didReceive segment: FreespeeUserSegment) {}
 
-func freespeeCall(_ call: FreespeeCall, didReceive userJourney: FreespeeUserJourney) {
-    guard UIApplication.shared.applicationState == .background && newState == .pending else { return }
-    // We received user journey data for the call - we can update the incoming call notification with data
-}
+func freespeeCall(_ call: FreespeeCall, didReceive userJourney: FreespeeUserJourney) {}
 
 }
-
 ```
+
 ### Handling contextual information for incoming calls
 
-Typically the Freespee contextual data is available instantly when a call comes in and provided to your app. You can access this data directly on the `FreespeeCall` instance provided.
+Freespee contextual data is populated as a call comes in to your app. You can access this data directly on the `FreespeeCall` instance provided.
 
-However, in some cases the data will be populated slightly after and because of that the `FreespeeCallStateChangeListener` has two callbacks for when Freespee data is recieved. 
-Your code need to handle this case as well to ensure a great UX for your users.
+When the data becomes available the `FreespeeCallStateChangeListener` will be notified. It has two callbacks for when Freespee data is recieved. 
 
 ```swift
 extension MyClass: FreespeeCallStateChangeListener {
@@ -220,33 +390,9 @@ func freespeeCall(_ call: FreespeeCall, didReceive userJourney: FreespeeUserJour
 
 ```
 
-The available data for a call is detailed in `FreespeeUserSegment` and `FreespeeUserJourney`, you can use this data to do further lookups within your own app domain as needed and then presenting it in the call UI for the incoming call. 
+The available data for a call is detailed in `FreespeeUserSegment` and `FreespeeUserJourney`, you can use this data to do further lookups within your own app domain as needed and then presenting it in the call UI for the call.
 
-### CallKit Integration
-
-CallKit integration is currently experimental.
-
-Note that enabling CallKit will limit your posibillities of presenting contextual data as a call comes in because iOS will take ownership of the call screen, at least when the device is locked.
-
-You can enable CallKit on the SDK and the SDK will handle the underlying logic for you.
-
-```swift
-// You need to supply your own CXProviderConfiguration as only one instance is permitted per app.  
-let providerConfiguration = CXProviderConfiguration(localizedName: "MyApp")
-providerConfiguration.iconTemplateImageData = UIImage(named: "appIcon")?.pngData()
-
-// Enable CallKit
-Freespee.shared()?.enableCallKit(with: providerConfiguration)
-
-// You can add a custom resolver for incoming calls, letting you provide the display name of the caller on the call screen.
-Freespee.shared()?.callKitLocalizedNameResolver = { (call: FreespeeCall, resolve: (FreespeeCall, String) -> Void) in
-    self.resolveName(for: call.peerIdentifier)
-    resolve(call, "John Doe")
-}
-
-// Disable CallKit
-Freespee.shared()?.disableCallKit()
-```
+Example usage: Download image / title from the last visited URL using OpenGraph meta tags on the web site.
 
 ### Error handling
 
@@ -257,7 +403,13 @@ Refer to the source documentation for the most up to date information on what sp
 
 ### Xcode Simulator
 
-When running your app from Xcode it will not be able to recieve VoIP-push and because of that no incoming phone calls will be triggered.
+The SDK is reliant on CallKit and VoIP-push notifications, neither of which will work on the simulator. Because of this you will need to exclusively test on device.
+However, you are able to test on the simulator if you make sure not to report any incoming call to CallKit and handle all other call logic without interacting with CallKit.
+
+You will need to set the SDK in a listening state as described below, since PushKit does not work on the simulator.
+
+#### Always listen
+
 To allow testing during development you can manually set the SDK in a state where it is constantly listening for incoming calls.
 You still need to connect the SDK first.
 

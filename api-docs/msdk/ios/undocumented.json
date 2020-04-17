@@ -2,23 +2,9 @@
   "warnings": [
     {
       "file": "/Users/freespee/home/workspace/ios_mobile_sdk_distribution/FreespeeSDK/FreespeeSDK/Freespee.h",
-      "line": 84,
+      "line": 78,
       "symbol": "Freespee.-init",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/freespee/home/workspace/ios_mobile_sdk_distribution/FreespeeSDK/FreespeeSDK/FreespeeCallNotes.h",
-      "line": 20,
-      "symbol": "FreespeeCallNoteType.FreespeeCallNoteTypeString",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/freespee/home/workspace/ios_mobile_sdk_distribution/FreespeeSDK/FreespeeSDK/FreespeeCallNotes.h",
-      "line": 21,
-      "symbol": "FreespeeCallNoteType.FreespeeCallNoteTypeNumber",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
